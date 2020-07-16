@@ -1,44 +1,399 @@
-/*!
- * Bootstrap v4.5.0 (https://getbootstrap.com/)
- * Copyright 2011-2020 The Bootstrap Authors
- * Copyright 2011-2020 Twitter, Inc.
- * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
- */
+@import './grid';
 
-@import "functions";
-@import "variables";
-@import "mixins";
-@import "root";
-@import "reboot";
-@import "type";
-@import "images";
-@import "code";
-@import "grid";
-@import "tables";
-@import "forms";
-@import "buttons";
-@import "transitions";
-@import "dropdown";
-@import "button-group";
-@import "input-group";
-@import "custom-forms";
-@import "nav";
-@import "navbar";
-@import "card";
-@import "breadcrumb";
-@import "pagination";
-@import "badge";
-@import "jumbotron";
-@import "alert";
-@import "progress";
-@import "media";
-@import "list-group";
-@import "close";
-@import "toasts";
-@import "modal";
-@import "tooltip";
-@import "popover";
-@import "carousel";
-@import "spinners";
-@import "utilities";
-@import "print";
+// FONTS
+@font-face {
+  font-family: 'Montserrat-Light';
+  src: local('Montserrat-Light'), url(../fonts/Montserrat-Light.otf);
+}
+
+@font-face {
+  font-family: 'Montserrat-Regular';
+  src: local('Montserrat-Regular'), url(../fonts/Montserrat-Regular.otf);
+}
+
+@font-face {
+  font-family: 'Montserrat-Medium';
+  src: local('Montserrat-Medium'), url(../fonts/Montserrat-Medium.otf);
+}
+
+
+@font-face {
+  font-family: 'Montserrat-SemiBold';
+  src: local('Montserrat-SemiBold'), url(../fonts/Montserrat-SemiBold.otf);
+}
+
+@font-face {
+  font-family: 'Montserrat-Bold';
+  src: local('Montserrat-Bold'), url(../fonts/Montserrat-Bold.otf);
+}
+
+@font-face {
+  font-family: 'Montserrat-ExtraBold';
+  src: local('Montserrat-ExtraBold'), url(../fonts/Montserrat-ExtraBold.otf);
+}
+
+// VARIABLES
+$font-light: 'Montserrat-Light', sans-serif;
+$font-regular: 'Montserrat-Regular', sans-serif;
+$font-medium: 'Montserrat-Medium', sans-serif;
+$font-semibold: 'Montserrat-SemiBold', sans-serif;
+$font-bold: 'Montserrat-Bold', sans-serif;
+$font-extrabold: 'Montserrat-ExtraBold', sans-serif;
+
+$color-grey-light-1: #EEEEEE;
+$color-grey-light-2: #F7F7F7;
+$color-grey-dark-1: #393E46;
+$color-grey-dark-2: #929AAB;
+$color-green: #99B898;
+$color-pink: #FECEAB;
+$color-orange: #FF847C;
+$color-red: #E84A5F;
+
+*,*::before,*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: $color-grey-light-2;
+  color: $color-grey-dark-1;
+  font-family: $font-regular;
+}
+
+a {
+  text-decoration: none;
+  color: $color-grey-dark-1;
+}
+
+ul {
+  list-style-type: none;
+}
+
+input {
+  font-family: $font-regular;
+  border: 0;
+  background-color: $color-grey-light-1;
+  padding: 1rem 1.125rem;
+}
+
+button {
+  border: none;
+}
+
+
+.heading {
+  &-lg {
+    font-size: 1.5rem;
+    font-family: $font-bold;
+    letter-spacing: 0.05rem;
+    margin-bottom: 1.5rem;
+  }
+}
+
+.btn {
+  display: inline-block;
+  border-radius: 8px;
+  cursor: pointer;
+
+  &-primary {
+    background-color: $color-orange;
+    color: $color-grey-light-2;
+  }
+
+  &-medium {
+    font-size: 0.875rem;
+    padding: 0.875rem 2rem;
+    letter-spacing: 0.05rem;
+    font-family: $font-semibold;
+    background-color: $color-red;
+  }
+
+  &-large {
+    font-size: 1rem;
+    padding: 1rem 3rem;
+    letter-spacing: 0.05rem;
+    font-family: $font-semibold;
+    background-color: $color-red;
+  }
+
+  &:focus {
+    outline: 0;
+  }
+}
+
+
+.header {
+  height: 6rem;
+
+  &-promo {
+    text-align: center;
+    font-family: $font-bold;
+    font-size: 0.75rem;
+    padding: .5rem 0;
+    background-color: $color-orange;
+    color: $color-grey-light-2;
+  }
+}
+
+.brand {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  &-text-icon {
+    margin-left: 0.5rem;
+    font-size: 1.125rem;
+    text-transform: uppercase;
+    font-family: $font-bold;
+  }
+}
+
+.navbar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  padding: 0.5rem;
+  box-shadow: 0 4px 8px -2px rgba(64, 64, 64, 0.1);
+  
+  &-form {
+    width: 40rem;
+    display: flex;
+    
+    &-search {
+      width: 40rem;
+      border-radius: 8px;
+      font-size: 0.875rem;
+      padding-left: 1.5rem;
+      color: $color-grey-dark-1;
+    }
+
+    &-btn {
+      margin-left: -4.5rem;
+      padding: 0 1.5rem;
+      border-radius: 0 8px 8px 0;
+    }
+  }
+
+  &-nav {
+    display: flex;
+    align-items: center;
+    font-size: 0.875rem;
+  }
+
+  &-item {
+    margin: 0 1.5rem;
+
+    .btn-register {
+      padding: 0.5rem 1rem;
+    }
+  }
+}
+
+.hero {
+  height: 22.5rem;
+  background: url(../images/hero-bg.jpg);
+  background-size: cover;
+  background-position: center;
+  color: $color-grey-light-1;
+  margin: 2rem 4rem;
+  border-radius: 8px;
+
+  &-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 4rem;
+
+    &-open {
+      font-size: 1.5rem;
+      font-family: $font-regular;
+    }
+  
+    &-solution {
+      font-size: 2.25rem;
+      font-family: $font-semibold;
+      margin: 0.5rem 0;
+
+      &-bold {
+        color: $color-orange;
+      }
+    }
+  
+    &-excellence {
+      font-size: 1.125rem;
+      font-family: $font-semibold;
+    }
+  }
+
+  &-cta {
+    text-align: center;
+    margin-top: 1.5rem;
+  }
+
+
+  &-icon {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 2rem;
+
+    &-text {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 0 3rem;
+
+      &-description {
+        font-size: 0.875rem;
+        margin-top: 0.5rem;
+        font-family: $font-light;
+      }
+
+      &-bold {
+        font-family: $font-bold;
+        color: $color-pink;
+      }
+    }
+  }
+}
+
+.menu {
+  padding: 2rem 4rem;
+}
+
+// UTILS Card Image 
+.card-image {
+  &-cover {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &-contain {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+}
+
+.card {
+  height: 100%;
+  position: relative;
+  border-radius: 0.5rem;
+  box-shadow: 0px 0px 8px rgba(57, 62, 70, 0.16);
+
+  &-tag {
+    z-index: 3;
+    font-size: 0.875rem;
+    background-color: $color-green;
+    padding: .5rem 1.25rem;
+    position: absolute;
+    top: 0; right: 0;
+    color: $color-grey-light-2;
+    min-height: 2rem;
+    border-radius: 0 .5rem;
+    font-family: $font-semibold;
+
+    &-text {
+      font-family: $font-regular;
+    }
+  }
+
+  &-image {
+    img {
+      border-radius: .5rem .5rem 0 0;
+    }
+  }
+  
+  &-meta {
+    margin-top: 1rem;
+    text-align: center;
+    font-size: 0.875rem;
+    padding-bottom: 1rem;
+
+    &-heading {
+      font-family: $font-bold;
+      font-size: 1rem;
+      margin-bottom: .75rem;
+    }
+
+    &-description {
+      color: $color-red;
+      font-family: $font-semibold;
+    }
+  }
+}
+
+.card-menu {
+  overflow: hidden;
+  cursor: pointer;
+    
+  &:after {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    content: "";
+    width: 100%;
+    height: 100%;
+    transform: scale(1.1);
+    transition: .5s transform ease-in-out;
+    z-index: 2;
+  }
+
+  .card-image {
+    z-index: 1;
+    margin: 0;
+    transform: scale(1.1);
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    transition: .25s transform ease-in-out;
+  }
+
+  .card-meta {
+    z-index: 4;
+    color: $color-grey-light-2;
+    position: absolute;
+    bottom: 0;
+    padding: 1.5rem;
+    width: 100%;
+    transform: translateY(0);
+    transition: .3s ease-in-out transform;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    text-align: left;
+
+    &-heading {
+      font-family: $font-bold;
+      font-size: 1.125rem;
+      text-transform: uppercase;
+      color: $color-grey-light-2;
+    }
+
+    &-description {
+      font-size: .875rem;
+      color: $color-grey-light-2;
+      font-family: $font-regular;
+    }
+  }
+
+  &:hover {
+    .card-meta {
+      transform: translateY(-.5rem);
+    }
+
+    &:after {
+      transform: scale(1);
+    }
+
+    .card-image {
+      transform: scale(1);
+    }
+  }
+}
+
+.new-product {
+  padding: 2rem 4rem
+}
